@@ -1,9 +1,10 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, only: %i[ create ]
   # GET /tweets or /tweets.json
   def index
     @tweets = Tweet.all
+    @tweet = Tweet.new
   end
 
   # GET /tweets/1 or /tweets/1.json
@@ -22,6 +23,8 @@ class TweetsController < ApplicationController
   # POST /tweets or /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
+    # @tweet.user = current_user
+    # @tweet.user_id = current_user.id
 
     respond_to do |format|
       if @tweet.save

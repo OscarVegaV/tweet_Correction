@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tweets</h1>
+  <% if user_signed_in? %>
+    <%= render 'form', tweet: @tweet %>
+  <% end %>
+
+<%
+=begin%>
+ <% 5.times do |i| %>
+  <% @i = i%>
+  <%= render 'jumbotron', i: @i %>
+<% end %>
+<%
+=end%>
 
 <table>
   <thead>
@@ -12,18 +23,22 @@
   </thead>
 
   <tbody>
-    <% @tweets.each do |tweet| %>
+    <% @tweets.each do |cualquier_cosa| %>
       <tr>
-        <td><%= tweet.content %></td>
-        <td><%= tweet.user_id %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= cualquier_cosa.content %></td>
+        <td><%= cualquier_cosa.user_id %></td>
+        <td><%= link_to 'Show', cualquier_cosa %></td>
+        <td><%= link_to 'Edit', edit_tweet_path(cualquier_cosa) %></td>
+        <td><%= link_to 'Destroy', cualquier_cosa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
+  <%
+=begin%>
+ <%= render 'jumbotron' %>
+<%
+=end%>
 <br>
 
-<%= link_to 'New Tweet', new_tweet_path %>
