@@ -19,17 +19,46 @@
       <th>Content</th>
       <th>User</th>
       <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tweets.each do |cualquier_cosa| %>
+    <% @tweets.each do |tweet| %>
       <tr>
-        <td><%= cualquier_cosa.content %></td>
-        <td><%= cualquier_cosa.user_id %></td>
-        <td><%= link_to 'Show', cualquier_cosa %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(cualquier_cosa) %></td>
-        <td><%= link_to 'Destroy', cualquier_cosa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= tweet.content %></td>
+        <td><%= tweet.user_id %></td>
+        <td><%= link_to 'Show', tweet %></td>
+        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= tweet.id %>">
+            Launch demo modal
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal<%= tweet.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
