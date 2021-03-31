@@ -34,7 +34,7 @@
         <td>
           <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal<%= tweet.id %>">
-            Launch demo modal
+            Retweet
           </button>
 
           <!-- Modal -->
@@ -48,7 +48,8 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  ...
+                  <% new_tweet = Tweet.new(retweet_id: tweet.id, content: tweet.content) %>
+                  <%= render 'form', tweet: new_tweet %>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

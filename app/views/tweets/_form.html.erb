@@ -17,6 +17,8 @@
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :retweet_id, value: tweet.retweet_id %>
+  <h1>retweet id: <%= tweet.retweet_id %></h1>
   <div class="field">
     <%
 =begin%>
