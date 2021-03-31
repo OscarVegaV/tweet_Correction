@@ -4,6 +4,9 @@
     <%= render 'form', tweet: @tweet %>
   <% end %>
 
+<% 5.times do |i| %>
+  <%= render 'jumbotron', i: i %>
+<% end %>
 <%
 =begin%>
  <% 5.times do |i| %>
